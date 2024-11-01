@@ -14,3 +14,20 @@ public:
         return {};
     }
 };
+
+// 在使用哈希表后，时间复杂度降到O(n),空间复杂度升高
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> res; // 定义一个返回结果
+        unordered_map<int,int> mm;
+        for(int i = 0; i < nums.size();i++){     
+            if(mm.find(target-nums[i])!=mm.end()){
+                res.push_back(mm[target-nums[i]]);
+                res.push_back(i);
+            }
+            mm[nums[i]]=i;
+        }
+        return res;
+    }
+};
